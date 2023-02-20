@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <style type="text/css">
+        body { 
+            font-family: sans-serif; 
+            background-color: #f2f2f2; 
+        }
+
+        .login-form { 
+            width: 300px; 
+            margin: 0 auto; 
+            padding: 30px 20px; 
+            background-color: #fff; 
+            border-radius: 4px; 
+        }
+
+        .login-form h3 { 
+            margin-top: 0; 
+            font-size: 24px; 
+        }
+
+        .login-form input[type="text"], .login-form input[type="password"] { 
+            width: 95%;  
+            padding: 10px;  
+            border: 1px solid #ccc;                                                                                                                                                             margin-bottom: 10px;  
+
+        }
+
+        .login-form button {     
+            background-color:#4CAF50;   
+            color: #fff;   
+            padding: 10px 20px;   
+            border :none;   
+            border-radius: 4px;   
+            cursor: pointer;  
+            margin-bottom: 10px; 
+        }
+        .login-form button:hover {
+            background: purple;
+        }
+
+
+
+    </style>    
+
+    <script type="text/javascript">
+        function validateForm() {
+            var username = document.forms["myForm"]["username"].value;   
+            var password = document.forms["myForm"]["password"].value; 
+            var repetition_password = document.forms["myForm"]["repetition-password"].value; 
+     
+            if (username.length <= 6 && password.length <= 6 && repetition_password.length <= 6) { 
+                alert("Short Username or Password"); 
+                document.getElementById("username").style.borderColor = "#FF0000";  
+                document.getElementById("password").style.borderColor = "#FF0000";        
+                document.getElementById("repetition-password").style.borderColor = "#FF0000";        
+                return false
+            } 
+            else if (password != repetition_password) { 
+                document.getElementById("password").style.borderColor = "#FF0000";        
+                document.getElementById("repetition-password").style.borderColor = "#FF0000";            
+                alert("Passwords don't match");    
+                return false;
+            }            
+            alert("Access registration\nUsername: " + username + "\nPassword: " + password);   
+            return true; 
+        } 
+        function startInputLogOrPass() {
+            document.getElementById("username").style.borderColor = null;         
+            document.getElementById("password").style.borderColor = null;    
+            document.getElementById("repetition-password").style.borderColor = null;  
+        } 
+    </script> 
+</head> 
+<body> 
+    <div class="login-form"> 
+        <h3 style="text-align: center">Login</h3> 
+        <form name="myForm" onsubmit="return validateForm()"> 
+            <input style="text-align: center;" type="text" placeholder="Username" name="username" id="username" onfocus="startInputLogOrPass()"> <br/> 
+            <input style="text-align: center;" type="password" placeholder="Password" name="password" id="password" onfocus="startInputLogOrPass()"> <br/>
+            <input style="text-align: center;" type="password" placeholder="Repetition password" name="repetition-password" id="repetition-password" onfocus="startInputLogOrPass()"> <br/><br/> 
+            <button type="submit">Registration</button> <br/><br/> 
+            <button type="reset">Clear</button> <br/><br/> 
+        </form>
+    </div>
+</body>
+</html>
